@@ -27,6 +27,7 @@ import gameObjects.userInterface.*;
 import gameObjects.userInterface.notes.*;
 import gameObjects.userInterface.notes.Strumline.UIStaticArrow;
 import meta.*;
+import meta.ButtplugUtils;
 import meta.MusicBeat.MusicBeatState;
 import meta.data.*;
 import meta.data.Song.SwagSong;
@@ -150,6 +151,9 @@ class PlayState extends MusicBeatState
 	public static var lastRating:FlxSprite;
 	// stores the last combo objects in an array
 	public static var lastCombo:Array<FlxSprite>;
+
+	//the payload for beat-based buttplug support
+	public var bpPayload:String = "";
 
 	// at the beginning of the playstate
 	override public function create()
@@ -1387,6 +1391,9 @@ class PlayState extends MusicBeatState
 		FlxG.sound.list.add(songMusic);
 		FlxG.sound.list.add(vocals);
 
+		//generate the payload for the frontend
+		bpPayload = ButtplugUtils.createPayload(Conductor.crochet);
+
 		// generate the chart
 		unspawnNotes = ChartLoader.generateChartType(SONG, determinedChartType);
 		// sometime my brain farts dont ask me why these functions were separated before
@@ -1467,6 +1474,9 @@ class PlayState extends MusicBeatState
 		//
 		charactersDance(curBeat);
 
+		//buttplug fuckery
+		ButtplugUtils.sendPayload(bpPayload);
+
 		// stage stuffs
 		stageBuild.stageUpdate(curBeat, boyfriend, gf, dadOpponent);
 	}
@@ -1540,6 +1550,7 @@ class PlayState extends MusicBeatState
 		canPause = false;
 		songMusic.volume = 0;
 		vocals.volume = 0;
+		ButtplugUtils.stop();
 		if (SONG.validScore)
 			Highscore.saveScore(SONG.song, songScore, storyDifficulty);
 

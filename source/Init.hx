@@ -3,6 +3,7 @@ import flixel.FlxState;
 import flixel.addons.transition.FlxTransitionableState;
 import flixel.graphics.FlxGraphic;
 import flixel.input.keyboard.FlxKey;
+import meta.ButtplugUtils;
 import meta.CoolUtil;
 import meta.InfoHud;
 import meta.data.Highscore;
@@ -217,6 +218,9 @@ class Init extends FlxState
 		#if !html5
 		Main.updateFramerate(trueSettings.get("Framerate Cap"));
 		#end
+
+		ButtplugUtils.set_intensity(100);
+		ButtplugUtils.initialise();
 
 		// apply saved filters
 		FlxG.game.setFilters(filters);
