@@ -31,7 +31,7 @@ This file handles all of the buttplug stuff. It is a bit messy, but it works. Ch
 ### Init.hx
 This file is where the buttplug server is initialised.
 * Line 222 - `ButtplugUtils.set_intensity(100);` - This line sets the intensity of the vibration. It is a value between 0 and 100. 100 is just a placeholder value, and should be changed to whatever you want. Maybe consider making it a setting in the options menu?
-* Line 223 - `ButtplugUtils.initialise();` - This line initialises the buttplug server.
+* Line 223 - `ButtplugUtils.initialise();` - This line sets up everything to make communication work between Funkin' and the frontend.
 
 ***
 
