@@ -1,6 +1,9 @@
 # Funkin' Buttplug Example Repo
 This repo contains a build of Forever Engine with [buttplug support](https://github.com/GsDrunkestDriver/funkin-buttplug) fully implemented!
 
+See it in action here:
+[![See it in action](https://img.youtube.com/vi/HTzAlFNEVOY/default.jpg)](https://www.youtube.com/watch?v=HTzAlFNEVOY)
+
 ***
 
 ## Dependencies
